@@ -6,25 +6,18 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Service
 {
-    public class SellerService
+    public class DepartmentService
     {
         private readonly WebApplicationContext _context;
 
-        public SellerService(WebApplicationContext context)
+        public DepartmentService(WebApplicationContext context)
         {
             _context = context;
         }
 
-        public List<Seller> FindAll()
+        public List<Department> FindAll()
         {
-            return _context.Seller.ToList();
+            return _context.Department.OrderBy(x => x.Name).ToList();
         }
-
-        public void Insert(Seller obj)
-        {
-            _context.Add(obj);
-            _context.SaveChanges();
-        }
-
     }
 }
